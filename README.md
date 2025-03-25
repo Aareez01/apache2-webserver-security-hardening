@@ -51,17 +51,15 @@ nano /etc/apache2/apache2.conf
 Add the following configuration at the bottom of the file:
 ```apache
 <IfModule security2_module>
-    # Enable the ModSecurity engine
-    SecRuleEngine on
-    # Minimize server response information
+    SecRuleEngine off
     ServerTokens Min
-    ServerSignature " "
+    SecServerSignature " "
 </IfModule>
 
+
 <IfModule mod_headers.c>
-    # Enable HSTS for enhanced HTTPS security
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    Header set X-Powered-By "Unknown"
+   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+   Header set X-Powered-By "Unknown"
 </IfModule>
 ```
 
